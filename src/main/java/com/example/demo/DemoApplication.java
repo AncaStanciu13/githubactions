@@ -11,13 +11,21 @@ import java.util.stream.Stream;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Product;
 import com.example.demo.Category;
 import com.example.demo.ExampleData;
 
 @SpringBootApplication
+@RestController
 public class DemoApplication {
+	  @RequestMapping("/hello")
+	  public String home() {
+	    return "Hello Docker World";
+	  }
+	  
 	static Optional<Product> findProduct(List<Product> products, Predicate<Product> predicate) {
 		for (Product product : products) {
 			if (predicate.test(product)) {
